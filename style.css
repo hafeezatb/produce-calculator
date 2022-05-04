@@ -203,6 +203,10 @@ figcaption {
     flex-basis: 100%;
 }
 
+.calculator .row.total.active {
+    display: block;
+}
+
 
 /*********************************************************************
   YOUR TABLET/DESKTOP STYLES GO HERE

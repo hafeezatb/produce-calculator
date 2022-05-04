@@ -70,7 +70,52 @@ input.addEventListener("change", function(e) {
         if (cheap) {
             cheap.classList.add("cheap");
         }
-        
+    // grand total
+    
+    let amazon_total = 0;
+    let peapod_total = 0;
+    let freshdirect_total = 0;
+
+    const rows = document.querySelectorAll(".row:not(.total)")
+    rows.forEach(function(this_row){
+        let qty = this_row.querySelector("input").value;
+        if(!qty){
+            return false
+        }
+        qty = parseFloat(qty)
+        const amazon = this_row.querySelector(".amazon");
+        const amazon_price = parseFloat(amazon.dataset.price);
+                const amazon_cost = qty * amazon_price;
+
+        const freshdirect = this_row.querySelector(".freshdirect");
+        const freshdirect_price = parseFloat(freshdirect.dataset.price);
+                const freshdirect_cost = qty * freshdirect_price
+
+        const peapod = this_row.querySelector(".peapod");
+        const peapod_price = parseFloat(peapod.dataset.price);
+                const peapod_cost = qty * peapod_price 
+                
+        amazon_total = amazon_total + amazon_cost
+        freshdirect_total = freshdirect_total + freshdirect_cost
+        peapod_total = peapod_total + peapod_cost
+
+       
+
+    })
+
+    const amazon_total_span = document.querySelector(".row.total .amazon span")
+    const freshdirect_total_span = document.querySelector(".row.total .freshdirect span")
+    const peapod_total_span = document.querySelector(".row.total .peapod span")
+
+
+    amazon_total_span.innerHTML = round_number(amazon_total);
+    freshdirect_total_span.innerHTML = round_number(freshdirect_total);
+    peapod_total_span.innerHTML = round_number(peapod_total);
+
+    document.querySelector(".row.total").classList.add("active")
+    document.querySelector(".row.total .amazon").classList.add("active");
+    document.querySelector(".row.total .freshdirect").classList.add("active");
+    document.querySelector(".row.total .peapod").classList.add("active");
     });
 
 });
