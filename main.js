@@ -11,7 +11,7 @@ function round_number(num) {
     // handle trailing zeroes
     num = num.toFixed(2);
 
-    return num
+    return num;
 }
 
 //get all of the calculator inputs
